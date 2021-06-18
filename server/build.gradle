@@ -34,3 +34,25 @@ dependencies {
 test {
 	useJUnitPlatform()
 }
+def env = 'dev'
+if (project.hasProperty('prod')) {
+	env = 'prod'
+} else if (project.hasProperty('uat')) {
+	env = 'uat'
+} else if (project.hasProperty('sit')) {
+	env = 'sit'
+}
+println 'Environment ' + env
+
+processResources {
+	filesMatching('**/application.yml') {
+		filter {
+			it.replace('#spring.profiles.active#', env)
+		}
+		println 'FileMatch OK'
+	}
+}
+
+bootWar {
+	archiveFileName = 'gsn.war'
+}

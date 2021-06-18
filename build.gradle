@@ -3,3 +3,28 @@ version '1.0-SNAPSHOT'
 group 'com.aic.edudemo'
 version '1.0-SNAPSHOT'
 
+import org.apache.tools.ant.taskdefs.condition.Os
+
+group 'cht.gsn'
+version '1.0-SNAPSHOT'
+
+def os = ''
+if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+    println "*** WINDOWS "
+    os = 'WINDOWS'
+} else {
+    println "*** NOT WINDOWS "
+    os = 'LINUX'
+}
+
+task backCopy(type:Exec) {
+    println 'backend copy Vue.js frontend content'
+    if (os == 'WINDOWS') {
+        commandLine 'del','.\\server\\src\\main\\resources\\','*.*','/Q','/F','/S'
+        commandLine 'rmdir','.\\server\\src\\main\\resources\\static','/S','/Q'
+        commandLine 'xcopy','.\\client\\dist','.\\server\\src\\main\\resources\\static','/E','/Y'
+    } else {
+        commandLine 'rm','-rf','./server/src/main/resources/public/*'
+        commandLine 'cp','-r','./client/dist/','./server/src/main/resources/static'
+    }
+}

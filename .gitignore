@@ -1,0 +1,7 @@
+.idea/
+server/src/main/resources/static/
+.gradle/
+server/logs/
+server/bin/
+.project
+.settings/
