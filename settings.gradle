@@ -1,0 +1,6 @@
+rootProject.name = 'EduDemo'
+include('server')
+include('client')
+rootProject.name = 'EduDemo'
+
+
