@@ -2,7 +2,7 @@ spring:
   datasource:
     username: education
     password: welcome1
-    url: jdbc:oracle:thin:@localhost:1521:xe
+    url: jdbc:oracle:thin:@192.168.50.43:1521:xe
     driver-class-name: oracle.jdbc.OracleDriver
 jpa:
   show-sql: true
