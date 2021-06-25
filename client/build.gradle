@@ -26,15 +26,13 @@ if (Os.isFamily(Os.FAMILY_WINDOWS)) {
 println 'Cilent Environment ' + env + ', npm:' + npm
 
 task frontBuild {
-    doLast {
-        exec {
-            println 'frontend exec "npm install"'
-            commandLine "${npm}", "install"
-        }
-        exec {
-            println 'frontend exec "npm run build"'
-            commandLine "${npm}", "run", "build"
-        }
+    exec {
+        println 'frontend exec "npm install"'
+        commandLine "${npm}", "install"
+    }
+    exec {
+        println 'frontend exec "npm run build"'
+        commandLine "${npm}", "run", "build"
     }
 }
 
